@@ -1,0 +1,447 @@
+/**
+ * MONCAO SECURE - Custom Styles
+ * Estilos personalizados sobre Bootstrap 5.3
+ */
+
+/* Google Fonts - Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Variables CSS */
+:root {
+    --color-primary: #1A73E8;
+    --color-secondary: #F1F3F4;
+    --color-accent: #34A853;
+    --color-danger: #EA4335;
+    --color-dark: #202124;
+    --color-white: #FFFFFF;
+    --color-warning: #FBBC04;
+    --color-gray: #5F6368;
+    --shadow-sm: 0 1px 2px 0 rgba(60,64,67,0.3);
+    --shadow-md: 0 4px 8px 2px rgba(60,64,67,0.15);
+    --shadow-lg: 0 8px 16px 4px rgba(60,64,67,0.15);
+}
+
+/* Base Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-secondary);
+    color: var(--color-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    padding: 20px 0;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: var(--shadow-md);
+}
+
+.navbar-brand {
+    font-size: 1.25rem;
+    letter-spacing: 0.5px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+    transition: color 0.2s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: var(--color-white);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.card-header {
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-secondary);
+    font-weight: 600;
+    border-radius: 12px 12px 0 0 !important;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    text-decoration: none;
+    color: inherit;
+}
+
+.dashboard-card .card {
+    height: 100%;
+    min-height: 140px;
+}
+
+.dashboard-card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.dashboard-card .card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--color-primary);
+}
+
+.dashboard-card .card-title {
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 10px 20px;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+    background-color: #1557b0;
+    border-color: #1557b0;
+}
+
+.btn-success {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.btn-success:hover {
+    background-color: #2d8e47;
+    border-color: #2d8e47;
+}
+
+.btn-danger {
+    background-color: var(--color-danger);
+    border-color: var(--color-danger);
+}
+
+.btn-danger:hover {
+    background-color: #c62828;
+    border-color: #c62828;
+}
+
+.btn-warning {
+    background-color: var(--color-warning);
+    border-color: var(--color-warning);
+    color: var(--color-dark);
+}
+
+.btn-warning:hover {
+    background-color: #e5a803;
+    border-color: #e5a803;
+}
+
+/* Fichaje Buttons */
+.btn-fichar-entrada {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 20px 40px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.btn-fichar-salida {
+    background-color: var(--color-danger);
+    border-color: var(--color-danger);
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 20px 40px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Forms */
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 1px solid #dadce0;
+    padding: 12px 16px;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.15);
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--color-dark);
+    margin-bottom: 8px;
+}
+
+/* Tables */
+.table {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table thead {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.table thead th {
+    font-weight: 600;
+    border: none;
+    padding: 14px 16px;
+}
+
+.table tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+.table tbody tr:hover {
+    background-color: var(--color-secondary);
+}
+
+.table tbody td {
+    padding: 12px 16px;
+    vertical-align: middle;
+}
+
+/* Badges / Estados */
+.badge {
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+.badge-estado-pendiente {
+    background-color: var(--color-warning);
+    color: var(--color-dark);
+}
+
+.badge-estado-aprobada {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+}
+
+.badge-estado-denegada {
+    background-color: var(--color-danger);
+    color: var(--color-white);
+}
+
+.badge-estado-tarde {
+    background-color: var(--color-danger);
+    color: var(--color-white);
+}
+
+.badge-estado-teletrabajo {
+    background-color: #9334e9;
+    color: var(--color-white);
+}
+
+/* Login Page */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #0d47a1 100%);
+}
+
+.login-card {
+    max-width: 420px;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.login-logo {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.login-subtitle {
+    color: var(--color-gray);
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+/* Time Display */
+.time-display {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    font-variant-numeric: tabular-nums;
+}
+
+.date-display {
+    font-size: 1.1rem;
+    color: var(--color-gray);
+}
+
+/* Stats Cards */
+.stats-card {
+    background: var(--color-white);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.stats-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.stats-label {
+    font-size: 0.875rem;
+    color: var(--color-gray);
+    margin-top: 4px;
+}
+
+/* Alert Messages */
+.alert {
+    border-radius: 8px;
+    border: none;
+}
+
+.alert-success {
+    background-color: #e6f4ea;
+    color: #1e8e3e;
+}
+
+.alert-danger {
+    background-color: #fce8e6;
+    color: #c5221f;
+}
+
+.alert-warning {
+    background-color: #fef7e0;
+    color: #b06000;
+}
+
+.alert-info {
+    background-color: #e8f0fe;
+    color: #1967d2;
+}
+
+/* Profile */
+.profile-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--color-primary);
+}
+
+.profile-photo-empty {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--color-gray);
+    border: 4px solid var(--color-gray);
+}
+
+/* Footer */
+footer {
+    background-color: var(--color-white);
+    border-top: 1px solid var(--color-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .time-display {
+        font-size: 2rem;
+    }
+    
+    .btn-fichar-entrada,
+    .btn-fichar-salida {
+        font-size: 1rem;
+        padding: 15px 30px;
+    }
+    
+    .dashboard-card .card {
+        min-height: 100px;
+    }
+    
+    .dashboard-card .card-icon {
+        font-size: 1.75rem;
+    }
+}
+
+/* Utility Classes */
+.text-primary-custom {
+    color: var(--color-primary) !important;
+}
+
+.bg-primary-custom {
+    background-color: var(--color-primary) !important;
+}
+
+.bg-accent-custom {
+    background-color: var(--color-accent) !important;
+}
+
+.bg-danger-custom {
+    background-color: var(--color-danger) !important;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Loading Spinner */
+.spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
