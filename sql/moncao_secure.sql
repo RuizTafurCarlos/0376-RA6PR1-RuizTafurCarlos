@@ -121,12 +121,12 @@ INSERT INTO departamentos (nombre) VALUES
 ('Diseño');
 
 -- Insertar Usuarios (Contraseña: moncao2024 - hash bcrypt)
--- Hash: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
+-- Hash: $2y$10$AU9HoBDYXh9He0x7MoefruidniaizwoJUpCpoSDhEw24ziXHRqUTS
 INSERT INTO users (nombre, email, password, rol, departamento_id) VALUES
-('Admin Principal', 'superadmin@moncao.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'superadmin', 1),
-('Jefe RRHH', 'rrhh@moncao.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', 2),
-('Juan García', 'juan@moncao.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'empleado', 4),
-('María López', 'maria@moncao.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'empleado', 5);
+('Admin Principal', 'superadmin@moncao.com', '$2y$10$AU9HoBDYXh9He0x7MoefruidniaizwoJUpCpoSDhEw24ziXHRqUTS', 'superadmin', 1),
+('Jefe RRHH', 'rrhh@moncao.com', '$2y$10$AU9HoBDYXh9He0x7MoefruidniaizwoJUpCpoSDhEw24ziXHRqUTS', 'admin', 2),
+('Juan García', 'juan@moncao.com', '$2y$10$AU9HoBDYXh9He0x7MoefruidniaizwoJUpCpoSDhEw24ziXHRqUTS', 'empleado', 4),
+('María López', 'maria@moncao.com', '$2y$10$AU9HoBDYXh9He0x7MoefruidniaizwoJUpCpoSDhEw24ziXHRqUTS', 'empleado', 5);
 
 -- Insertar Proyectos
 INSERT INTO proyectos (nombre, departamento_id, fecha_inicio, fecha_fin) VALUES
