@@ -37,12 +37,11 @@ try {
     $stmt->execute([$userId]);
     $proyectos = $stmt->fetchAll();
     
-    // Horas trabajadas esta semana
+    // Horas trabajadas esta semana (Lunes a Viernes)
     $stmt = $pdo->prepare('SELECT SUM(TIMESTAMPDIFF(HOUR, hora_entrada, hora_salida)) as horas 
                           FROM fichajes 
                           WHERE user_id = ? 
-                          AND fecha >= DATE_SUB(CURDATE(), INTERVAL WEEKDAY(CURDATE()) DAY)
-                          AND fecha <= DATE_ADD(DATE_SUB(CURDATE(), INTERVAL WEEKDAY(CURDATE()) DAY), INTERVAL 4 DAY)
+                          AND YEARWEEK(fecha, 1) = YEARWEEK(CURDATE(), 1)
                           AND hora_salida IS NOT NULL');
     $stmt->execute([$userId]);
     $horasSemana = $stmt->fetch()['horas'] ?? 0;

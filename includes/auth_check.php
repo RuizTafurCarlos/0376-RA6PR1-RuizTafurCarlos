@@ -4,7 +4,10 @@
  * Verifica que el usuario esté autenticado
  */
 
-session_start();
+// Iniciar sesión solo si no está ya activa
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 /**
  * Verifica si el usuario está autenticado
@@ -71,6 +74,3 @@ function requireDepartamento($departamentos) {
         exit;
     }
 }
-
-// Ejecutar verificación de autenticación al incluir este archivo
-checkAuth();

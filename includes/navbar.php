@@ -45,7 +45,7 @@ $rol = isset($_SESSION['rol']) ? $_SESSION['rol'] : '';
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?php echo $currentPage === 'proyectos' ? 'active' : ''; ?>" href="modules/proyectos.php">
-                        <i class="fas fa-project-diagram me-1"></i> Projetos
+                        <i class="fas fa-project-diagram me-1"></i> Proyectos
                     </a>
                 </li>
                 
@@ -56,7 +56,7 @@ $rol = isset($_SESSION['rol']) ? $_SESSION['rol'] : '';
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="adminDropdown">
                         <li><a class="dropdown-item" href="admin/empleados.php"><i class="fas fa-users me-2"></i>Empleados</a></li>
-                        <li><a class="dropdown-item" href="admin/proyectos.php"><i class="fas faProject-diagram me-2"></i>Proyectos</a></li>
+                        <li><a class="dropdown-item" href="admin/proyectos.php"><i class="fas fa-project-diagram me-2"></i>Proyectos</a></li>
                         <li><a class="dropdown-item" href="admin/solicitudes.php"><i class="fas fa-check-circle me-2"></i>Solicitudes</a></li>
                         <?php if ($_SESSION['departamento_id'] == 2 || isSuperadmin()): ?>
                         <li><a class="dropdown-item" href="admin/fichajes.php"><i class="fas fa-edit me-2"></i>Fichajes</a></li>

@@ -13,6 +13,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 }
 
 require_once '../config/db.php';
+require_once '../includes/auth_check.php';
 
 $pageTitle = 'Fichaje';
 $userId = $_SESSION['user_id'];

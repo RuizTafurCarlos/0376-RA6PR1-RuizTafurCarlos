@@ -1,10 +1,20 @@
+<?php
+/**
+ * MONCAO SECURE - Header
+ * Cabecera común para todas las páginas
+ */
+
+if (!isset($pageTitle)) {
+    $pageTitle = 'MONCAO SECURE';
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="MONCAO SECURE - Control de Acceso y Fichaje">
-    <title><?php echo isset($pageTitle) ? $pageTitle . ' - ' : ''; ?>MONCAO SECURE</title>
+    <title><?php echo htmlspecialchars($pageTitle); ?> - MONCAO SECURE</title>
     
     <!-- Google Fonts - Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,24 +29,3 @@
     
     <!-- Custom CSS -->
     <link href="assets/css/style.css" rel="stylesheet">
-    
-    <style>
-        :root {
-            --color-primary: #1A73E8;
-            --color-secondary: #F1F3F4;
-            --color-accent: #34A853;
-            --color-danger: #EA4335;
-            --color-dark: #202124;
-            --color-white: #FFFFFF;
-            --color-warning: #FBBC04;
-            --color-gray: #5F6368;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--color-secondary);
-            color: var(--color-dark);
-        }
-    </style>
-</head>
-<body>
