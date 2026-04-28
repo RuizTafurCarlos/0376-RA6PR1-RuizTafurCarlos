@@ -16,6 +16,10 @@ require_once '../includes/auth_check.php';
 
 $pageTitle = 'Horario';
 $userId = $_SESSION['user_id'];
+$horarios = [];
+$horasMes = 0;
+$horasExtra = 0;
+$diasVacaciones = 0;
 
 try {
     $pdo = getDB();

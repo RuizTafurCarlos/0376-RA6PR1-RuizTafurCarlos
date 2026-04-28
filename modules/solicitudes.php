@@ -18,6 +18,7 @@ $pageTitle = 'Solicitudes';
 $userId = $_SESSION['user_id'];
 $message = '';
 $messageType = '';
+$solicitudes = [];
 
 try {
     $pdo = getDB();

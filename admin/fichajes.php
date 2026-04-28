@@ -26,6 +26,11 @@ require_once '../config/db.php';
 $pageTitle = 'Gestión de Fichajes';
 $message = '';
 $messageType = '';
+$empleados = [];
+$fichajes = [];
+$fechaDesde = date('Y-m-01');
+$fechaHasta = date('Y-m-d');
+$usuarioFiltro = '';
 
 try {
     $pdo = getDB();

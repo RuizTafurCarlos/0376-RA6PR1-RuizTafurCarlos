@@ -16,6 +16,8 @@ require_once '../includes/auth_check.php';
 
 $pageTitle = 'Proyectos';
 $userId = $_SESSION['user_id'];
+$proyectos = [];
+$statsProyectos = [];
 
 try {
     $pdo = getDB();

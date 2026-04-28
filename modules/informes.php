@@ -20,6 +20,10 @@ $userId = $_SESSION['user_id'];
 // Fechas por defecto (último mes)
 $fechaInicio = $_GET['fecha_inicio'] ?? date('Y-m-01');
 $fechaFin = $_GET['fecha_fin'] ?? date('Y-m-d');
+$stats = ['dias_trabajados' => 0, 'horas_totales' => 0, 'horas_extra' => 0];
+$diasVacaciones = 0;
+$horasSemana = [];
+$horasProyecto = [];
 
 try {
     $pdo = getDB();

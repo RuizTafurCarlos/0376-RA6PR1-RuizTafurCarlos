@@ -16,9 +16,10 @@ require_once '../includes/auth_check.php';
 
 $pageTitle = 'Perfil';
 $userId = $_SESSION['user_id'];
-$departamentoId = $_SESSION['departamento_id'];
+$departamentoId = $_SESSION['departamento_id'] ?? null;
 $message = '';
 $messageType = '';
+$user = null;
 
 try {
     $pdo = getDB();

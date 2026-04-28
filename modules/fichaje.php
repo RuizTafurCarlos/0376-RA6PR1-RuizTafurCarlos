@@ -17,6 +17,13 @@ require_once '../includes/auth_check.php';
 
 $pageTitle = 'Fichaje';
 $userId = $_SESSION['user_id'];
+$proyectos = [];
+$fichajeHoy = null;
+$horario = null;
+$fichajesSemana = [];
+$message = '';
+$messageType = '';
+$error = '';
 
 // Obtener proyectos asignados al usuario
 try {

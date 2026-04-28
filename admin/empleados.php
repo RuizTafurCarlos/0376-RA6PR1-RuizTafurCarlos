@@ -18,9 +18,11 @@ require_once '../config/db.php';
 
 $pageTitle = 'Gestión de Empleados';
 $userId = $_SESSION['user_id'];
-$departamentoId = $_SESSION['departamento_id'];
+$departamentoId = $_SESSION['departamento_id'] ?? null;
 $message = '';
 $messageType = '';
+$empleados = [];
+$departamentos = [];
 
 try {
     $pdo = getDB();
