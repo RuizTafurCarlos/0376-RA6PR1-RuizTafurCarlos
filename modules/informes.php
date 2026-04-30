@@ -11,8 +11,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     exit;
 }
 
-require_once '../config/db.php';
-require_once '../includes/auth_check.php';
+require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../includes/auth_check.php';
 
 $pageTitle = 'Informes';
 $userId = $_SESSION['user_id'];
@@ -102,6 +102,28 @@ try {
             --color-gray: #5F6368;
         }
         body { font-family: 'Inter', sans-serif; background-color: var(--color-secondary); }
+
+    .stats-card {
+        background-color: var(--color-white);
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+
+    .stats-card .stats-value {
+        font-size: 2.2em;
+        font-weight: 700;
+        color: var(--color-primary);
+        margin-bottom: 5px;
+    }
+
+    .stats-card .stats-label {
+        font-size: 0.9em;
+        color: var(--color-gray);
+        text-transform: uppercase;
+    }
     </style>
 </head>
 <body>
