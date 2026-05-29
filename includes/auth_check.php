@@ -4,7 +4,10 @@
  * Verifica que el usuario esté autenticado
  */
 
-session_start();
+// Iniciar sesión solo si no está ya activa
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 /**
  * Verifica si el usuario está autenticado
@@ -12,7 +15,7 @@ session_start();
  */
 function checkAuth() {
     if (!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-        header('Location: index.php');
+        header('Location: /index.php');
         exit;
     }
 }
@@ -25,7 +28,7 @@ function requireRole($roles) {
     checkAuth();
     
     if (!isset($_SESSION['rol'])) {
-        header('Location: index.php');
+        header('Location: /index.php');
         exit;
     }
     
@@ -33,7 +36,7 @@ function requireRole($roles) {
     
     if (!in_array($_SESSION['rol'], $rolesPermitidos)) {
         // Usuario no tiene permiso - redirigir a dashboard
-        header('Location: dashboard.php');
+        header('Location: /dashboard.php');
         exit;
     }
 }
@@ -60,17 +63,14 @@ function requireDepartamento($departamentos) {
     checkAuth();
     
     if (!isset($_SESSION['departamento_id'])) {
-        header('Location: index.php');
+        header('Location: /index.php');
         exit;
     }
     
     $depsPermitidos = is_array($departamentos) ? $departamentos : [$departamentos];
     
     if (!in_array($_SESSION['departamento_id'], $depsPermitidos)) {
-        header('Location: dashboard.php');
+        header('Location: /dashboard.php');
         exit;
     }
 }
-
-// Ejecutar verificación de autenticación al incluir este archivo
-checkAuth();

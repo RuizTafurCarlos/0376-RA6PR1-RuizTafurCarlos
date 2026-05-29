@@ -37,12 +37,11 @@ try {
     $stmt->execute([$userId]);
     $proyectos = $stmt->fetchAll();
     
-    // Horas trabajadas esta semana
+    // Horas trabajadas esta semana (Lunes a Viernes)
     $stmt = $pdo->prepare('SELECT SUM(TIMESTAMPDIFF(HOUR, hora_entrada, hora_salida)) as horas 
                           FROM fichajes 
                           WHERE user_id = ? 
-                          AND fecha >= DATE_SUB(CURDATE(), INTERVAL WEEKDAY(CURDATE()) DAY)
-                          AND fecha <= DATE_ADD(DATE_SUB(CURDATE(), INTERVAL WEEKDAY(CURDATE()) DAY), INTERVAL 4 DAY)
+                          AND YEARWEEK(fecha, 1) = YEARWEEK(CURDATE(), 1)
                           AND hora_salida IS NOT NULL');
     $stmt->execute([$userId]);
     $horasSemana = $stmt->fetch()['horas'] ?? 0;
@@ -195,7 +194,7 @@ try {
         <div class="row g-3 mb-4">
             <!-- Fichaje -->
             <div class="col-md-4 col-lg-2">
-                <a href="modules/fichaje.php" class="dashboard-card">
+                <a href="/modules/fichaje.php" class="dashboard-card">
                     <div class="card">
                         <div class="card-body">
                             <i class="fas fa-clock card-icon"></i>
@@ -207,7 +206,7 @@ try {
             
             <!-- Horario -->
             <div class="col-md-4 col-lg-2">
-                <a href="modules/horario.php" class="dashboard-card">
+                <a href="/modules/horario.php" class="dashboard-card">
                     <div class="card">
                         <div class="card-body">
                             <i class="fas fa-calendar card-icon"></i>
@@ -219,7 +218,7 @@ try {
             
             <!-- Solicitudes -->
             <div class="col-md-4 col-lg-2">
-                <a href="modules/solicitudes.php" class="dashboard-card">
+                <a href="/modules/solicitudes.php" class="dashboard-card">
                     <div class="card">
                         <div class="card-body">
                             <i class="fas fa-file-alt card-icon"></i>
@@ -231,7 +230,7 @@ try {
             
             <!-- Informes -->
             <div class="col-md-4 col-lg-2">
-                <a href="modules/informes.php" class="dashboard-card">
+                <a href="/modules/informes.php" class="dashboard-card">
                     <div class="card">
                         <div class="card-body">
                             <i class="fas fa-chart-bar card-icon"></i>
@@ -243,7 +242,7 @@ try {
             
             <!-- Proyectos -->
             <div class="col-md-4 col-lg-2">
-                <a href="modules/proyectos.php" class="dashboard-card">
+                <a href="/modules/proyectos.php" class="dashboard-card">
                     <div class="card">
                         <div class="card-body">
                             <i class="fas fa-project-diagram card-icon"></i>
@@ -255,7 +254,7 @@ try {
             
             <!-- Perfil -->
             <div class="col-md-4 col-lg-2">
-                <a href="modules/perfil.php" class="dashboard-card">
+                <a href="/modules/perfil.php" class="dashboard-card">
                     <div class="card">
                         <div class="card-body">
                             <i class="fas fa-user card-icon"></i>
@@ -277,7 +276,7 @@ try {
         <div class="row g-3 mb-4">
             <!-- Gestión de Empleados -->
             <div class="col-md-4 col-lg-3">
-                <a href="admin/empleados.php" class="dashboard-card">
+                <a href="/admin/empleados.php" class="dashboard-card">
                     <div class="card">
                         <div class="card-body">
                             <i class="fas fa-users card-icon"></i>
@@ -289,7 +288,7 @@ try {
             
             <!-- Gestión de Proyectos -->
             <div class="col-md-4 col-lg-3">
-                <a href="admin/proyectos.php" class="dashboard-card">
+                <a href="/admin/proyectos.php" class="dashboard-card">
                     <div class="card">
                         <div class="card-body">
                             <i class="fas fa-project-diagram card-icon"></i>
@@ -301,7 +300,7 @@ try {
             
             <!-- Gestión de Solicitudes -->
             <div class="col-md-4 col-lg-3">
-                <a href="admin/solicitudes.php" class="dashboard-card">
+                <a href="/admin/solicitudes.php" class="dashboard-card">
                     <div class="card">
                         <div class="card-body">
                             <i class="fas fa-check-circle card-icon"></i>
@@ -314,7 +313,7 @@ try {
             <!-- Gestión de Fichajes (solo RRHH y superadmin) -->
             <?php if ($departamentoId == 2 || isSuperadmin()): ?>
             <div class="col-md-4 col-lg-3">
-                <a href="admin/fichajes.php" class="dashboard-card">
+                <a href="/admin/fichajes.php" class="dashboard-card">
                     <div class="card">
                         <div class="card-body">
                             <i class="fas fa-edit card-icon"></i>

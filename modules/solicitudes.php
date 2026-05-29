@@ -7,16 +7,18 @@
 session_start();
 
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    header('Location: ../index.php');
+    header('Location: /index.php');
     exit;
 }
 
-require_once '../config/db.php';
+require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../includes/auth_check.php';
 
 $pageTitle = 'Solicitudes';
 $userId = $_SESSION['user_id'];
 $message = '';
 $messageType = '';
+$solicitudes = [];
 
 try {
     $pdo = getDB();

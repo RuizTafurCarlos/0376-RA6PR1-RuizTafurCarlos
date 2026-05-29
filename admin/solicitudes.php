@@ -7,13 +7,14 @@
 session_start();
 
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    header('Location: ../index.php');
+    header('Location: /index.php');
     exit;
 }
 
+require_once __DIR__ . '/../includes/auth_check.php';
 requireRole(['admin', 'superadmin']);
 
-require_once '../config/db.php';
+require_once __DIR__ . '/../config/db.php';
 
 $pageTitle = 'Gestión de Solicitudes';
 $userId = $_SESSION['user_id'];

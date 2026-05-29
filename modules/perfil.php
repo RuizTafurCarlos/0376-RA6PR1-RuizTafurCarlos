@@ -7,17 +7,19 @@
 session_start();
 
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    header('Location: ../index.php');
+    header('Location: /index.php');
     exit;
 }
 
-require_once '../config/db.php';
+require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../includes/auth_check.php';
 
 $pageTitle = 'Perfil';
 $userId = $_SESSION['user_id'];
-$departamentoId = $_SESSION['departamento_id'];
+$departamentoId = $_SESSION['departamento_id'] ?? null;
 $message = '';
 $messageType = '';
+$user = null;
 
 try {
     $pdo = getDB();

@@ -12,10 +12,18 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     exit;
 }
 
-require_once '../config/db.php';
+require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../includes/auth_check.php';
 
 $pageTitle = 'Fichaje';
 $userId = $_SESSION['user_id'];
+$proyectos = [];
+$fichajeHoy = null;
+$horario = null;
+$fichajesSemana = [];
+$message = '';
+$messageType = '';
+$error = '';
 
 // Obtener proyectos asignados al usuario
 try {
@@ -58,8 +66,7 @@ $message = '';
 $messageType = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require_once '../config/db.php';
-    require_once '../mail/notificaciones.php';
+    require_once __DIR__ . '/../mail/notificaciones.php';
     
     try {
         $pdo = getDB();
@@ -147,11 +154,100 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             --color-gray: #5F6368;
         }
         body { font-family: 'Inter', sans-serif; background-color: var(--color-secondary); }
+
+    .btn-fichar-entrada {
+        background-color: var(--color-primary);
+        color: var(--color-white);
+        padding: 10px 30px;
+        font-size: 1.1em;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        border: none;
+    }
+
+    .btn-fichar-entrada:hover {
+        background-color: #165ab7; 
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        color: var(--color-white);
+    }
+
+    .btn-fichar-salida {
+        background-color: var(--color-danger);
+        color: var(--color-white);
+        padding: 10px 30px;
+        font-size: 1.1em;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        border: none;
+    }
+
+    .btn-fichar-salida:hover {
+        background-color: #b73228; 
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        color: var(--color-white);
+    }
+
+    .badge-estado-tarde {
+        background-color: var(--color-danger);
+        color: var(--color-white);
+    }
+
+    .badge-estado-aprobada {
+        background-color: var(--color-accent);
+        color: var(--color-white);
+    }
+
+    .badge-estado-pendiente {
+        background-color: var(--color-warning);
+        color: var(--color-dark);
+    }
+
+    .badge-estado-teletrabajo {
+        background-color: #6f42c1; 
+        color: var(--color-white);
+    }
+
+    .stats-card {
+        background-color: var(--color-white);
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+
+    .stats-card .stats-value {
+        font-size: 2.2em;
+        font-weight: 700;
+        color: var(--color-primary);
+        margin-bottom: 5px;
+    }
+
+    .stats-card .stats-label {
+        font-size: 0.9em;
+        color: var(--color-gray);
+        text-transform: uppercase;
+    }
+
+    .time-display {
+        font-size: 3.5em;
+        font-weight: 700;
+        color: var(--color-dark);
+        line-height: 1;
+    }
+
+    .date-display {
+        font-size: 1.2em;
+        color: var(--color-gray);
+    }
+    
     </style>
 </head>
 <body>
 
-<?php include '../includes/navbar.php'; ?>
+<?php include __DIR__ . '/../includes/navbar.php'; ?>
 
 <main>
     <div class="container-fluid py-4">
@@ -229,7 +325,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <span class="badge bg-danger ms-2">Tarde (<?php echo $fichajeHoy['minutos_retraso']; ?> min)</span>
                                     <?php endif; ?>
                                     <?php if ($fichajeHoy['telework']): ?>
-                                    <span class="badge bg-purple ms-2">Teltrabajo</span>
+                                    <span class="badge bg-purple ms-2">Teletrabajo</span>
                                     <?php endif; ?>
                                 </p>
                             </div>
@@ -326,7 +422,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </main>
 
-<?php include '../includes/footer.php'; ?>
+<?php include __DIR__ . '/../includes/footer.php'; ?>
 
 <script>
     // Actualizar reloj cada segundo
