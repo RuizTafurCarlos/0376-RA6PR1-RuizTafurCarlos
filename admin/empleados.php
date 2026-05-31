@@ -71,6 +71,14 @@ try {
         }
     }
     
+    // Reactivar empleado
+    if (isset($_GET['reactivar'])) {
+        $stmt = $pdo->prepare('UPDATE users SET archivado = FALSE, activo = TRUE WHERE id = ?');
+        $stmt->execute([$_GET['reactivar']]);
+        $message = 'Empleado reactivado correctamente.';
+        $messageType = 'success';
+    }
+
     // Archivar empleado
     if (isset($_GET['archivar'])) {
         $stmt = $pdo->prepare('UPDATE users SET archivado = TRUE, activo = FALSE WHERE id = ?');
@@ -210,6 +218,10 @@ try {
                                             <?php if (!$emp['archivado']): ?>
                                             <a href="?archivar=<?php echo $emp['id']; ?>" class="btn btn-sm btn-warning" onclick="return confirm('¿Archivar empleado?')">
                                                 <i class="fas fa-archive"></i>
+                                            </a>
+                                            <?php else: ?>
+                                            <a href="?reactivar=<?php echo $emp['id']; ?>" class="btn btn-sm btn-success" onclick="return confirm('¿Reactivar empleado?')" title="Reactivar">
+                                                <i class="fas fa-user-check"></i>
                                             </a>
                                             <?php endif; ?>
                                         </td>
